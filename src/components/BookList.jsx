@@ -2,7 +2,7 @@ import { Component } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Comments from "./Comments";
+// import Comments from "./Comments";
 
 import MyCard from "./SingleBook";
 
@@ -15,7 +15,9 @@ class BookList extends Component {
   state = {
     
     data: null,
-    selectedProduct: null
+    selectedProduct: null,
+    download: false,
+    id: null
     
   };
 
@@ -35,8 +37,33 @@ class BookList extends Component {
 
 
         })
+       
 
 }
+
+
+// downloadPDF = async() => {
+//   fetch("https://guilleromfragachan.herokuapp.com/products/download/2ja5b99ckv6i8t4y", {
+      
+//   }).then(response => { return response.json() })
+//   .then(data => {
+//       console.log(data)
+    
+
+
+
+
+//   })
+ 
+
+//     }
+//  componentDidUpdate = (prevState) =>{
+
+//   if(prevState!==this.state.download){
+//       this.downloadPDF(this.state.selectedProduct)
+//   }
+//  }
+
 componentDidMount = ()=>{
     this.getData()
 }
@@ -59,24 +86,27 @@ componentDidMount = ()=>{
           {
           this.state.data &&
           this.state.data.map((e) => (
-            <Col key={e._id} xs={2}>
-              <MyCard selectedProduct={(_id)=>{
+            <Col  key={e._id} 
+            xs={2}>
+              <MyCard id={e._id} selectedProduct={(_id)=>{
                 this.setState({
                   selectedProduct:_id
                 })
               }} book={e} />
+              
             </Col>
+            
           ))} 
         </Row>
 
         </Col>
-        <Col md={4}>
+        {/* <Col md={4}>
           
        
               <Comments query={this.state}/> 
            
           
-          </Col>
+          </Col> */}
 
         </Row>
       </Container>
