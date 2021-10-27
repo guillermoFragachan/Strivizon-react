@@ -49,7 +49,7 @@ class ShowData extends React.Component{
 
                         
                     </div>
-                    <div class="bg-body shadow-sm mx-auto" >
+                    <div class="bg-body shadow-sm mx-auto inlineEEE" >
                         <img src={e.imageUrl} class="img-fluid"/>
                         
                         </div>
